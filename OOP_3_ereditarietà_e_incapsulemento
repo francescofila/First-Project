@@ -1,0 +1,50 @@
+
+# ---- Esercizio ContoBancario 
+
+class ContoBancario:
+    def __init__(self, saldo_iniziale=0):
+        self._saldo = saldo_iniziale # saldo protetto
+
+
+    def mostra_saldo(self):
+        return self._saldo
+    
+    def deposita(self, importo):
+        if importo <=0:
+            raise ValueError("Limporto deve essere >0")
+        self._saldo += importo
+
+    def preleva(self, importo) :
+        if importo <= 0:
+            raise ValueError("L'importo del prelievo deve essere > 0.")
+        if importo > self._saldo:
+            raise ValueError("Saldo insufficiente.")
+        self._saldo -= importo
+
+
+conto = ContoBancario(100)
+
+print("Saldo iniziale:", conto.mostra_saldo())
+
+conto.deposita(50)
+print("Dopo deposito 50:", conto.mostra_saldo())
+
+conto.preleva(30)
+print("Dopo prelievo 30:", conto.mostra_saldo())
+
+
+
+class Veicolo:
+    def __init__(self, marca):
+        self.marca = marca
+
+    def descrivi(self):
+        print(f"Veicolo di marca {self.marca}")
+
+class Auto(Veicolo):
+    pass
+
+
+class Auto(Veicolo):
+    def descrivi(self):
+        print(f"Auto di marca {self.marca}")
