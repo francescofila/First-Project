@@ -1,22 +1,15 @@
-# 02_persona.py
 
-class Persona:
-    def __init__(self, nome, eta):
-        if eta < 0:
-            raise ValueError("L'età non può essere negativa.")
-        self.nome = nome
-        self.eta = eta
-
-    def __str__(self):
-        return f"{self.nome} ({self.eta} anni)"
+class Divisione:
+    def dividi(self, a, b):
+        try:
+            return a / b
+        except ZeroDivisionError:
+            print("Errore: divisione per zero non consentita.")
+            return None
 
 
 if __name__ == "__main__":
-    try:
-        p1 = Persona("Mario", 25)
-        print("OK:", p1)
+    d = Divisione()
 
-        p2 = Persona("Anna", -3)  # qui scatta l'eccezione
-        print("OK:", p2)          # questa riga non verrà eseguita
-    except ValueError as e:
-        print("Errore:", e)
+    print("10 / 2 =", d.dividi(10, 2))
+    print("10 / 0 =", d.dividi(10, 0))
