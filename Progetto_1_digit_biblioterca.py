@@ -17,6 +17,10 @@ print()
 
 # Parte 2 - Strutture dati
 
+print()
+print(" -- Parte 2 --")
+
+
 #list
 lista_titoli = [
     "Il nome della rosa",
@@ -39,6 +43,8 @@ utenti_registrati = {"Sandro", "Beatrice", "Luca", "Marta"}
 
 
 # Parte 3 - OOP
+print()
+print(" -- Parte 3 --")
 
 class Libro:
 
@@ -81,6 +87,8 @@ class Prestito:
         )
 
 # ---- Parte 4 – Funzionalità | Prestito
+print()
+print(" -- Parte 4 --")
 
 def presta_libro(utente, libro, giorni):
     # verifica almeno se ha una copia disponibile
