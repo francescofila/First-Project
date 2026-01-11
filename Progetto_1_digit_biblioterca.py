@@ -46,6 +46,11 @@ utenti_registrati = {"Sandro", "Beatrice", "Luca", "Marta"}
 print()
 print(" -- Parte 3 --")
 
+print("Lista titoli:", lista_titoli)
+print("Dizionario copie:", copie_per_titolo)
+print("Set utenti:", utenti_registrati)
+print()
+
 class Libro:
 
     def __init__ (self, titolo, autore, anno, copie_disponibili):
