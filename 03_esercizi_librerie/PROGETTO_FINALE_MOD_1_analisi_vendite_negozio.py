@@ -13,7 +13,7 @@ OUT_ANALYZED = "vendite_analizzate.csv"
 
 
 def file_esiste(nome_file):
-    """Ritorna True se il file esiste, False altrimenti (senza usare os)."""
+    """Ritorna True se il file esiste, False altrimenti"""
     try:
         with open(nome_file, "r", encoding="utf-8"):
             return True
