@@ -22,7 +22,7 @@ REQUIRED_COLS = [
 
 
 # =============================================================================
-# 1) DATASET SINTETICO (SEMPLICE) + “SPORCO CONTROLLATO”
+# 1) DATASET SINTETICO + “SPORCO CONTROLLATO”
 # =============================================================================
 
 def generate_dataset(
@@ -32,16 +32,15 @@ def generate_dataset(
     dup_rate: float = 0.03
 ) -> pd.DataFrame:
     """
-    Genera un dataset conforme alla traccia (colonne in inglese).
-    Valori europei in italiano per Region/State/Category/Sub-Category.
+    Genero dataset 
 
-    Date: generate in stringa ISO 'YYYY-MM-DD' (pulizia date semplicissima con pd.to_datetime).
+    Date: generate in stringa ISO 'YYYY-MM-DD' 
     Sporco controllato: un po' di NULL e duplicati per testare la pulizia.
     """
     rng = np.random.default_rng(seed)
 
-    # ---- (A) 9 Stati + 3 Macro-aree coerenti ----
-    # Commento chiave: questa mappa garantisce che Region sia sempre coerente con State.
+    # ---- (A) 9 Stati + 3 Aree geografiche ----
+    
     state_to_region = {
         "Italia": "Europa Meridionale",
         "Spagna": "Europa Meridionale",
@@ -64,7 +63,8 @@ def generate_dataset(
     }
 
     # ---- (C) Date (semplici) ----
-    # Commento chiave: generiamo stringhe ISO per rendere la conversione in datetime trivialissima.
+    # Generiamo stringhe ISO per rendere la conversione in datetime trivialissima.
+
     start = pd.Timestamp("2022-01-01")
     end = pd.Timestamp("2025-12-31")
     days = (end - start).days + 1
@@ -90,7 +90,7 @@ def generate_dataset(
     quantity = rng.integers(1, 9, size=n)
 
     # ---- (E) Sales / Profit (semplici ma plausibili) ----
-    # Commento chiave: profit contiene anche una quota di ordini in perdita.
+    # Profit contiene anche una quota di ordini in perdita.
     base_price = {"Arredamento": 120.0, "Cancelleria": 25.0, "Tecnologia": 220.0}
     base = np.vectorize(base_price.get)(category)
 
@@ -114,7 +114,8 @@ def generate_dataset(
     })
 
     # ---- (F) Sporco controllato: NULL e duplicati ----
-    # Commento chiave: serve solo a testare la pulizia, senza rovinare il dataset.
+    # Tesrt pulizia
+
     if null_rate > 0:
         core_cols = ["Order Date", "Ship Date", "Category", "Sub-Category", "State", "Sales", "Profit"]
         for col in core_cols:
@@ -178,7 +179,7 @@ def clean_dataset(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
 
 
 # =============================================================================
-# 3) FEATURE ENGINEERING MINIMO + EDA (opzionale da stampare)
+# 3) FEATURE ENGINEERING MINIMO + EDA 
 # =============================================================================
 
 def add_features(df: pd.DataFrame) -> pd.DataFrame:
