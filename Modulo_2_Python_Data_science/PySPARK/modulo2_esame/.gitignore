@@ -1,0 +1,4 @@
+data_local/
+*.crc
+.ipynb_checkpoints/
+.DS_Store
